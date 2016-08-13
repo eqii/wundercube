@@ -65,8 +65,8 @@
   
 (defn -main []
   (let [words (line-seq (java.io.BufferedReader. (java.io.StringReader. (slurp "http://www.wunderdog.fi/s/words.txt"))))
-        uppercased (pmap clojure.string/upper-case words)
-        results (map search-word-from-cube uppercased)]
+        uppercased (map clojure.string/upper-case words)
+        results (pmap search-word-from-cube uppercased)]
     (println (count (filter not-nil? results))))
   (shutdown-agents))
 
